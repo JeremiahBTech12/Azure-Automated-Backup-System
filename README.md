@@ -85,7 +85,7 @@ terraform apply
 - Test file upload produced two versions in blob list output
 
 
-## Troubleshooting
+## Troubleshooting & Lessons Learned
 
 ## Teardown
 ###
