@@ -21,9 +21,35 @@ The result is a backup system that is automated, resilient, and cost-efficient. 
 ### <img width="1920" height="1080" alt="Resource Group (3)" src="https://github.com/user-attachments/assets/5d73ca77-121d-4816-abf4-7ad34e7fa665" />
 
 
-## Tools & Services Used
-
 ## What Gets Built
+
+###
+```
+rg-backup-[yourname]
+├── Storage Account (stbackup[yourname]) — GRS 
+│   ├── Container: documents
+│   ├── Container: database-exports
+│   ├── Container: application-files
+│   ├── Blob Versioning — enabled · 30-day soft delete
+│   └── Lifecycle Policy — Hot → Cool (30d) → Archive (90d) → Delete (365d)
+├── Log Analytics Workspace — 30-day retention
+├── Storage Diagnostic Settings — StorageRead · StorageWrite · StorageDelete
+├── Logic App Workflow — daily confirmation email
+├── Monitor Alert Rule — fires if zero writes in 24 hours
+└── Monitor Action Group — routes notifications to configured email
+```
+
+## Tools & Services Used
+###
+```
+
+Infrastructure as Code | Terraform (azurerm provider ~> 3.0)
+Cloud Platform |	Microsoft Azure
+Storage	| Azure Blob Storage (GRS, versioning, lifecycle management)
+Monitoring |	Azure Monitor + Log Analytics Workspace
+Automation / Notifications |	Azure Logic Apps
+CLI / Deployment |	Azure CLI, PowerShell
+```
 
 ## Prerequisites 
 
