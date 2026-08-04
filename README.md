@@ -67,6 +67,15 @@ CLI / Deployment |Azure CLI, PowerShell
 ## Upload A Test File & Versioning
 
 ## Verification Checklist
+###
+- Storage account stbackup[yourname] exists in the portal
+- Storage account → Data management → Versioning shows Enabled
+- Storage account → Data management → Lifecycle management shows the backup-lifecycle rule
+- Three containers exist: documents, database-exports, application-files
+- Logic App la-backup-confirm-[yourname] runs on a recurrence trigger
+- Alert rule alert-no-backup-writes exists in Monitor → Alerts
+- Test file upload produced two versions in blob list output
+
 
 ## Troubleshooting
 
