@@ -1,4 +1,4 @@
-```terraform
+
 variable "yourname" {
   description = "Your name, lowercase, no spaces. Used to make resource names unique."
   type        = string
@@ -22,4 +22,3 @@ variable "tags" {
     managed_by  = "terraform"
   }
 }
-```
