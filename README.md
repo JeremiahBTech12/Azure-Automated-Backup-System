@@ -17,10 +17,6 @@ This project replaces that manual, unreliable process with a fully automated Azu
 
 The result is a backup system that is automated, resilient, and cost-efficient. Instead of relying on manual processes and hoping backups were completed, the business gains confidence that its data is continuously protected, recoverable, and managed with minimal operational effort.
 
-## Business Problem
-
-### What it provides:
-
 ## Architecture Flow
 ### <img width="1920" height="1080" alt="Resource Group (3)" src="https://github.com/user-attachments/assets/5d73ca77-121d-4816-abf4-7ad34e7fa665" />
 
