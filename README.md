@@ -2,6 +2,7 @@
 In this project I build a fully automated backup system using Azure Blob Storage with versioning, lifecycle management policies that control cost by moving older data to cheaper storage tiers, and a Logic Apps workflow that sends a daily backup confirmation email.
 
 ## Video Walkthrough: 
+Jeremiah Brown | Azure Cloud Engineer | Linkedin: https://www.linkedin.com/in/jeremiah-brown12/
 
 ## Project Overview
 
@@ -489,3 +490,5 @@ To remove all Azure resources created by this project, run:
 ```
 terraform destroy
 ```
+
+## Thank you for following along watching me create real-world cloud solutions. This is only part of my full Azure cloud portfolio.
