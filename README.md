@@ -79,7 +79,7 @@ New-Item -ItemType File main.tf, variables.tf, outputs.tf, terraform.tfvars
 ## Step 1 — Write variables.tf
 
 ###
-```
+```terraform
 variable "yourname" {
   description = "Your name, lowercase, no spaces. Used to make resource names unique."
   type        = string
@@ -108,7 +108,7 @@ variable "tags" {
 ## Step 2 — Write terraform.tfvars
 
 ###
-```
+```terraform
 yourname    = "jeremiah"
 location    = "East US"
 alert_email = "your.email@example.com"
@@ -119,7 +119,7 @@ alert_email = "your.email@example.com"
 
 Provider
 
-```
+```terraform
 terraform {
   required_providers {
     azurerm = {
@@ -138,7 +138,7 @@ data "azurerm_client_config" "current" {}
 
 ## Resource group
 
-```
+```terraform
 resource "azurerm_resource_group" "main" {
   name     = "rg-backup-${var.yourname}"
   location = var.location
@@ -159,7 +159,7 @@ blob_properties with versioning_enabled = true is what makes this a real backup 
 
 delete_retention_policy with days = 30 means that even after a blob is deleted, Azure retains it in a soft-deleted state for 30 days before permanently removing it. This is a safety net on top of versioning.
 
-```
+```terraform
 resource "azurerm_storage_account" "backup" {
   name                     = "stbackup${var.yourname}"
   resource_group_name      = azurerm_resource_group.main.name
@@ -192,7 +192,7 @@ Containers are the top-level organizational unit inside a storage account — si
 
 container_access_type = "private" means no public internet access. Files can only be accessed by authenticated Azure identities or connection strings. Backup data should never be publicly readable.
 
-```
+```terraform
 resource "azurerm_storage_container" "documents" {
   name                  = "documents"
   storage_account_name  = azurerm_storage_account.backup.name
@@ -225,7 +225,7 @@ The version rule applies to older versions that have been superseded. These are 
 
 filters with prefix_match = ["documents/", "database-exports/", "application-files/"] means this policy applies across all three containers.
 
-```
+```terraform
 resource "azurerm_storage_management_policy" "lifecycle" {
   storage_account_id = azurerm_storage_account.backup.id
  
@@ -255,7 +255,7 @@ resource "azurerm_storage_management_policy" "lifecycle" {
 
 ## Log Analytics Workspace
 
-```
+```terraform
 resource "azurerm_log_analytics_workspace" "main" {
   name                = "law-backup-${var.yourname}"
   location            = var.location
@@ -274,7 +274,7 @@ This routes storage account logs and metrics into Log Analytics. The StorageWrit
 
 metric with category Transaction sends metrics about storage operations (request count, latency, errors) to Log Analytics, making it possible to alert on unusual patterns like a sudden drop in write activity.
 
-```
+```terraform
 resource "azurerm_monitor_diagnostic_setting" "storage_logs" {
   name                       = "diag-storage-to-law"
   target_resource_id         = "${azurerm_storage_account.backup.id}/blobServices/default"
@@ -296,7 +296,7 @@ resource "azurerm_monitor_diagnostic_setting" "storage_logs" {
 ###
 The Action Group defines where notifications go. The Logic App is what sends the confirmation email each morning. The Logic App is provisioned here and configured in the portal in Step 6.
 
-```
+```terraform
 resource "azurerm_monitor_action_group" "backup_alerts" {
   name                = "ag-backup-${var.yourname}"
   resource_group_name = azurerm_resource_group.main.name
@@ -330,7 +330,7 @@ frequency = "PT1H" means Azure checks the condition every hour. window_size = "P
 
 dimension with name = "ApiName" and values = ["PutBlob", "PutBlock"] filters the transaction count to only write operations. Without this filter the alert would fire on any quiet period, including normal times when nobody is reading files.
 
-```
+```terraform
 resource "azurerm_monitor_metric_alert" "no_writes" {
   name                = "alert-no-backup-writes"
   resource_group_name = azurerm_resource_group.main.name
@@ -364,7 +364,7 @@ resource "azurerm_monitor_metric_alert" "no_writes" {
 
 ## Step 4 — Write outputs.tf
 
-```
+```terraform
 output "storage_account_name" {
   value = azurerm_storage_account.backup.name
 }
