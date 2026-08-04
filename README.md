@@ -151,7 +151,7 @@ resource "azurerm_resource_group" "main" {
 ###
 This is the core of the backup system. Every file uploaded here is automatically replicated across multiple physical Azure data centers — not just different rooms in the same building, but geographically separate facilities.
 
-account_replication_type = "GRS" stands for Geo-Redundant Storage. Azure keeps your data in your primary region (East US) and asynchronously copies it to a secondary region (West US) automatically. If an entire region goes offline, your data still exists in the secondary. For a backup system, GRS is the correct choice — LRS (used in the data lab) only replicates within a single region.
+account_replication_type = "GRS" stands for Geo-Redundant Storage. Azure keeps your data in your primary region (East US) and asynchronously copies it to a secondary region (West US) automatically. If an entire region goes offline, your data still exists in the secondary. For a backup system, GRS is the correct choice — LRS only replicates within a single region.
 
 min_tls_version = "TLS1_2" enforces that all connections to the storage account use TLS 1.2 or higher. Older TLS versions have known vulnerabilities and should not be used for backup data.
 
