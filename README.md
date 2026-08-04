@@ -52,6 +52,11 @@ CLI / Deployment |Azure CLI, PowerShell
 ```
 
 ## Prerequisites 
+### Before deploying, install and configure:
+  - Terraform
+  - Azure CLI
+  - An active Azure subscription
+  
 
 ## Terraform Configuration
 
