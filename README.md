@@ -71,3 +71,8 @@ CLI / Deployment |Azure CLI, PowerShell
 ## Troubleshooting
 
 ## Teardown
+###
+To remove all Azure resources created by this project, run:
+```
+terraform destroy
+```
