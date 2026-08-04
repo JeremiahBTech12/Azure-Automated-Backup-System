@@ -61,6 +61,14 @@ CLI / Deployment |Azure CLI, PowerShell
 ## Terraform Configuration
 
 ## Deploy
+###
+Deploy the infrastructure:
+
+```
+terraform init
+terraform plan
+terraform apply
+```
 
 ## Logic App Configuration (Daily Confirmation)
 
