@@ -43,12 +43,12 @@ rg-backup-[yourname]
 ###
 ```
 
-Infrastructure as Code | Terraform (azurerm provider ~> 3.0)
-Cloud Platform |	Microsoft Azure
-Storage	| Azure Blob Storage (GRS, versioning, lifecycle management)
-Monitoring |	Azure Monitor + Log Analytics Workspace
-Automation / Notifications |	Azure Logic Apps
-CLI / Deployment |	Azure CLI, PowerShell
+Infrastructure as Code |Terraform (azurerm provider ~> 3.0)
+Cloud Platform |Microsoft Azure
+Storage	|Azure Blob Storage (GRS, versioning, lifecycle management)
+Monitoring |Azure Monitor + Log Analytics Workspace
+Automation / Notifications |Azure Logic Apps
+CLI / Deployment |Azure CLI, PowerShell
 ```
 
 ## Prerequisites 
