@@ -20,6 +20,12 @@ The result is a backup system that is automated, resilient, and cost-efficient. 
 ## Architecture Flow
 ### <img width="1920" height="1080" alt="Resource Group (3)" src="https://github.com/user-attachments/assets/5d73ca77-121d-4816-abf4-7ad34e7fa665" />
 
+The system operates using an event-driven architecture designed to automate file protection and eliminate the need for manual backups. Whenever a new file is uploaded to the primary Azure Storage container, the storage account emits an event that triggers a Logic App. The Logic App then processes the event and creates a backup copy in a separate backup container, ensuring that newly added files are protected automatically without requiring user intervention. From the moment a file is uploaded to the time the backup is successfully created, the entire workflow is fully automated.
+
+Supporting this workflow are several resilience and monitoring components. Blob versioning preserves previous versions of files whenever they are modified or overwritten, providing protection against accidental changes and enabling point-in-time recovery. Azure Monitor, diagnostic settings, and Log Analytics collect operational telemetry, while alert rules continuously monitor backup activity and notify administrators if expected backup operations fail to occur. Together, these services provide comprehensive visibility into backup health, storage activity, and the overall reliability of the automated backup system.
+
+Designing the architecture before implementing the solution ensured that each Azure service had a clearly defined responsibility, resulting in a scalable, resilient, and maintainable backup solution.
+
 
 ## What Gets Built
 
