@@ -1,7 +1,7 @@
 # Azure-Automated-Backup-System
 In this project I build a fully automated backup system using Azure Blob Storage with versioning, lifecycle management policies that control cost by moving older data to cheaper storage tiers, and a Logic Apps workflow that sends a daily backup confirmation email.
 
-## Video Walkthrough: 
+## Video Walkthrough: https://www.loom.com/share/45981ba164d945babda5e6471cbcecee
 Jeremiah Brown | Azure Cloud Engineer | Linkedin: https://www.linkedin.com/in/jeremiah-brown12/
 
 ## Project Overview
