@@ -1,3 +1,0 @@
-yourname    = "jeremiah"
-location    = "East US"
-alert_email = "your.email@example.com"

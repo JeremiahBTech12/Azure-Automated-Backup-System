@@ -109,6 +109,7 @@ variable "tags" {
 ## Step 2 — Write terraform.tfvars
 
 ###
+- In the repo this file is `terraform.tfvars.example`. Copy it to `terraform.tfvars` and fill in your own values. `terraform.tfvars` is git-ignored so your email never gets committed.
 ```terraform
 yourname    = "jeremiah"
 location    = "East US"

@@ -1,0 +1,5 @@
+# Copy this file to terraform.tfvars and fill in your own values.
+# terraform.tfvars is git-ignored so your email stays out of the repo.
+yourname    = "jeremiah"
+location    = "East US"
+alert_email = "your.email@example.com"
